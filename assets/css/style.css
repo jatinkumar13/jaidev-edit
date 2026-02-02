@@ -1,0 +1,306 @@
+/* ===============================
+   JAIDEVEDIT – PUBLIC PREMIUM CSS
+=============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+  --bg-main:#060b18;
+  --bg-card:rgba(255,255,255,0.08);
+  --bg-glass:rgba(255,255,255,0.12);
+  --border-soft:rgba(255,255,255,0.15);
+  --text-main:#eaf6ff;
+  --text-muted:#9fb3c8;
+  --accent:#00f0ff;
+  --accent-2:#4facfe;
+  --radius:16px;
+}
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',system-ui,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top,#0e1f3d,#050816 70%);
+  color:var(--text-main);
+}
+
+/* ===============================
+   COMMON
+=============================== */
+.section{
+  padding:20px 16px;
+}
+
+h1,h2,h3,h4{
+  font-weight:600;
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:.6;
+  padding:20px 10px;
+}
+
+/* ===============================
+   HOME HEADER
+=============================== */
+.home-header{
+  text-align:center;
+  padding:30px 16px 20px;
+}
+
+.bhakti{
+  font-size:13px;
+  color:#fde68a;
+  margin-bottom:6px;
+}
+
+.logo-text{
+  font-size:34px;
+  font-weight:700;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.tagline{
+  font-size:14px;
+  color:var(--text-muted);
+  margin-top:6px;
+}
+
+/* ===============================
+   PAGE HEADER (CATEGORY / CONTACT)
+=============================== */
+.page-header{
+  padding:20px 16px;
+}
+
+.page-header h1{
+  font-size:24px;
+  margin-top:10px;
+}
+
+.page-header p{
+  font-size:14px;
+  color:var(--text-muted);
+  margin-top:4px;
+}
+
+.back-link{
+  text-decoration:none;
+  color:var(--accent);
+  font-size:14px;
+}
+
+/* ===============================
+   GRIDS
+=============================== */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:14px;
+}
+
+.category-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:16px;
+}
+
+/* ===============================
+   CATEGORY CARD
+=============================== */
+.category-card{
+  background:linear-gradient(
+    145deg,
+    rgba(20,30,60,0.9),
+    rgba(10,20,40,0.9)
+  );
+  border-radius:var(--radius);
+  padding:18px 14px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--text-main);
+  transition:.25s ease;
+  box-shadow:0 0 0 transparent;
+}
+
+.category-card h3{
+  margin-top:6px;
+  font-size:16px;
+}
+
+.category-card p{
+  font-size:13px;
+  opacity:.75;
+  margin-top:4px;
+}
+
+.category-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 22px rgba(0,240,255,.35);
+}
+
+/* ===============================
+   TREND / VIDEO CARD
+=============================== */
+.trend-card,
+.video-card{
+  background:var(--bg-card);
+  backdrop-filter:blur(14px);
+  border-radius:var(--radius);
+  padding:10px;
+  transition:.25s ease;
+}
+
+.trend-card:hover,
+.video-card:hover{
+  transform:scale(1.02);
+  box-shadow:0 0 22px rgba(79,172,254,.35);
+}
+
+.trend-card img,
+.video-card img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.video-card h4,
+.trend-card h4{
+  font-size:14px;
+  margin:10px 0 6px;
+}
+
+/* ===============================
+   BADGE
+=============================== */
+.badge{
+  display:inline-block;
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#f97316,#ef4444);
+  color:#fff;
+}
+
+/* ===============================
+   SEARCH
+=============================== */
+.search-box{
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  border:none;
+  outline:none;
+  background:rgba(0,0,0,.45);
+  color:#fff;
+}
+
+/* ===============================
+   BUTTONS
+=============================== */
+.download-btn,
+.contact-btn{
+  width:100%;
+  padding:12px;
+  margin-top:8px;
+  border-radius:14px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:#000;
+}
+
+.download-btn:hover,
+.contact-btn:hover{
+  box-shadow:0 0 20px rgba(0,240,255,.6);
+}
+
+/* ===============================
+   CONTACT CARD
+=============================== */
+.contact-card{
+  max-width:420px;
+  margin:auto;
+  background:var(--bg-card);
+  backdrop-filter:blur(14px);
+  border-radius:var(--radius);
+  padding:24px;
+  text-align:center;
+}
+
+.contact-text{
+  font-size:14px;
+  opacity:.85;
+  margin-bottom:18px;
+}
+
+.telegram-id{
+  margin-top:12px;
+  font-size:13px;
+  color:var(--text-muted);
+}
+
+/* ===============================
+   RESPONSIVE
+=============================== */
+@media(max-width:600px){
+  .trend-card img,
+  .video-card img{
+    height:120px;
+  }
+}
+
+
+
+
+
+/* ===============================
+   THUMBNAIL AUTO-FIX (GLOBAL)
+=============================== */
+
+/* Card image wrapper */
+.video-card img,
+.trend-card img{
+  width:100%;
+  aspect-ratio:9 / 16;      /* 🔥 auto height */
+  object-fit:cover;         /* crop, no stretch */
+  border-radius:12px;
+  background:#000;          /* empty load fix */
+}
+
+/* Prevent layout jump */
+.video-card,
+.trend-card{
+  overflow:hidden;
+}
+
+/* Optional: smooth loading */
+.video-card img,
+.trend-card img{
+  transition:transform .3s ease;
+}
+
+.video-card:hover img,
+.trend-card:hover img{
+  transform:scale(1.03);
+}
+
+/* Mobile safety */
+@media(max-width:600px){
+  .video-card img,
+  .trend-card img{
+    aspect-ratio:3 / 4;     /* mobile friendly */
+  }
+}

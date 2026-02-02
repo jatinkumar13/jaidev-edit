@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Downloads – Jaidev Edit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <div class="site-box">
+    <h2>Downloads</h2>
+    <p class="tagline">Latest Creator Resources</p>
+
+    <div id="downloadList" class="list">
+      <p>Loading...</p>
+    </div>
+
+    <a href="index.html" class="back-link">⬅ Back to Home</a>
+  </div>
+
+  <script type="module">
+    import { db } from "./js/firebase.js";
+    import {
+      collection,
+      query,
+      orderBy,
+      onSnapshot
+    } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+    const list = document.getElementById("downloadList");
+    const q = query(collection(db, "downloads"), orderBy("createdAt", "desc"));
+
+    onSnapshot(q, (snap) => {
+      list.innerHTML = "";
+      if (snap.empty) {
+        list.innerHTML = "<p>No downloads available</p>";
+        return;
+      }
+
+      snap.forEach(doc => {
+        const d = doc.data();
+
+        const card = document.createElement("div");
+        card.className = "download-card";
+
+        if (d.thumb) {
+          const img = document.createElement("img");
+          img.src = d.thumb;
+          img.alt = d.title;
+          card.appendChild(img);
+        }
+
+        const h4 = document.createElement("h4");
+        h4.innerText = d.title;
+
+        const a = document.createElement("a");
+        a.href = d.link;
+        a.target = "_blank";
+        a.innerText = "📥 Download";
+
+        card.appendChild(h4);
+        card.appendChild(a);
+        list.appendChild(card);
+      });
+    });
+  </script>
+
+</body>
+</html>
