@@ -1,47 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Admin Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard – JaidevEdit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body class="admin-page">
 
 <header class="admin-header">
-  <h2>🛠 Dashboard</h2>
-  <button id="logoutBtn">Logout</button>
+  <div>
+    <h1>🛠 Admin Dashboard</h1>
+    <p id="adminEmail">Loading...</p>
+    <p id="stats">Loading stats…</p>
+  </div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
 </header>
 
 <main class="admin-container">
 
-<!-- STATS -->
-<div class="stats">
-  <div>Total Items: <b id="totalItems">0</b></div>
-</div>
+<section class="admin-card">
+  <h2>➕ Upload Template</h2>
 
-<!-- ADD / EDIT -->
-<div class="admin-card">
-  <h3>Add / Edit Item</h3>
   <input id="title" placeholder="Title">
-  <input type="file" id="imageFile">
-  <input id="video" placeholder="Video / Link">
-  <select id="category">
-    <option>CapCut</option>
-    <option>VN</option>
-    <option>Gemini</option>
-    <option>QR</option>
-  </select>
-  <label><input type="checkbox" id="featured"> Trending</label>
-  <button id="saveBtn">Save</button>
-</div>
 
-<!-- LIST -->
-<div class="admin-card">
-  <h3>Uploaded Items</h3>
-  <div id="itemsList"></div>
-</div>
+  <select id="category">
+    <option value="CapCut">CapCut</option>
+    <option value="VN">VN</option>
+    <option value="Gemini">Gemini</option>
+    <option value="QR">QR</option>
+  </select>
+
+  <label>🖼 Thumbnail Image</label>
+  <input type="file" id="thumbnailFile" accept="image/*">
+
+  <label>🎞 Template Video (optional)</label>
+  <input type="file" id="videoFile" accept="video/*">
+
+  <label class="check-row">
+    <input type="checkbox" id="featured"> Trending
+  </label>
+
+  <button class="primary-btn" onclick="uploadItem()">Upload</button>
+</section>
+
+<section class="admin-card">
+  <h2>📋 Uploaded Items</h2>
+  <div id="itemsList">Loading…</div>
+</section>
 
 </main>
 
