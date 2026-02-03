@@ -1,59 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Admin Dashboard – JaidevEdit</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ADMIN CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body class="admin-page">
 
-  <!-- HEADER -->
-  <header class="admin-header">
-    <div>
-      <h1>🛠 Admin Dashboard</h1>
-      <p id="adminEmail">Loading...</p>
-    </div>
-    <button class="logout-btn" onclick="logout()">Logout</button>
-  </header>
+<header class="admin-header">
+  <h2>🛠 Dashboard</h2>
+  <button id="logoutBtn">Logout</button>
+</header>
 
-  <!-- MAIN -->
-  <main class="admin-container">
+<main class="admin-container">
 
-    <!-- ADD / EDIT FORM -->
-    <section class="admin-card">
-      <h2>➕ Add / Edit Item</h2>
+<!-- STATS -->
+<div class="stats">
+  <div>Total Items: <b id="totalItems">0</b></div>
+</div>
 
-      <input id="title" placeholder="Title (e.g. Inventory Reel)">
-      <input id="thumbnail" placeholder="Thumbnail Image URL">
-      <input id="video" placeholder="Video / Download / Prompt / Link">
+<!-- ADD / EDIT -->
+<div class="admin-card">
+  <h3>Add / Edit Item</h3>
+  <input id="title" placeholder="Title">
+  <input type="file" id="imageFile">
+  <input id="video" placeholder="Video / Link">
+  <select id="category">
+    <option>CapCut</option>
+    <option>VN</option>
+    <option>Gemini</option>
+    <option>QR</option>
+  </select>
+  <label><input type="checkbox" id="featured"> Trending</label>
+  <button id="saveBtn">Save</button>
+</div>
 
-      <select id="category">
-        <option value="CapCut">CapCut</option>
-        <option value="VN">VN</option>
-        <option value="Gemini">Gemini</option>
-        <option value="QR">QR</option>
-      </select>
+<!-- LIST -->
+<div class="admin-card">
+  <h3>Uploaded Items</h3>
+  <div id="itemsList"></div>
+</div>
 
-      <label class="check-row">
-        <input type="checkbox" id="featured">
-        Mark as Trending / Featured
-      </label>
+</main>
 
-      <button class="primary-btn" onclick="addItem()">Save Item</button>
-    </section>
-
-    <!-- ITEMS LIST -->
-    <section class="admin-card">
-      <h2>📋 Uploaded Items</h2>
-      <div id="itemsList">Loading items...</div>
-    </section>
-
-  </main>
-
-  <!-- ✅ CORRECT JS PATH -->
-  <script type="module" src="assets/js/admin-dashboard.js"></script>
+<script type="module" src="assets/js/admin-dashboard.js"></script>
 </body>
 </html>
