@@ -1,58 +1,104 @@
-import { auth, db } from "./firebase.js";
+import { auth, db, storage, ADMINS } from "./firebase.js";
 import {
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 import {
-  addDoc,
-  collection,
+  addDoc, collection, getDocs,
+  deleteDoc, doc, updateDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-/* 🔐 Protect dashboard */
-onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    window.location.href = "admin-login.html";
+import {
+  ref, uploadBytes, getDownloadURL
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
+let editId = null;
+
+/* 🔐 Auth check */
+onAuthStateChanged(auth, user => {
+  if (!user || !ADMINS.includes(user.email)) {
+    location.href = "admin-login.html";
   } else {
-    document.getElementById("adminEmail").innerText =
-      "Logged in as: " + user.email;
+    loadItems();
   }
 });
 
-/* ➕ Add item */
-window.addItem = async function () {
-  const title = document.getElementById("title").value;
-  const thumbnail = document.getElementById("thumbnail").value;
-  const video = document.getElementById("video").value;
-  const category = document.getElementById("category").value;
-  const featured = document.getElementById("featured").checked;
+/* 📊 Load items */
+async function loadItems() {
+  const box = itemsList;
+  box.innerHTML = "";
+  const snap = await getDocs(collection(db, "items"));
+  totalItems.innerText = snap.size;
 
-  if (!title || !thumbnail || !video) {
-    alert("All fields required ❌");
-    return;
+  snap.forEach(d => {
+    const i = d.data();
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <img src="${i.thumbnail}">
+      <b>${i.title}</b> (${i.category})
+      <video src="${i.video}" muted loop></video>
+      <button onclick="editItem('${d.id}', '${i.title}', '${i.thumbnail}', '${i.video}', '${i.category}', ${i.featured})">✏️</button>
+      <button onclick="deleteItem('${d.id}')">❌</button>
+    `;
+    box.appendChild(div);
+  });
+}
+
+/* ➕ Save */
+saveBtn.onclick = async () => {
+  const file = imageFile.files[0];
+  let imgURL = "";
+
+  if (file) {
+    const r = ref(storage, "images/" + Date.now());
+    await uploadBytes(r, file);
+    imgURL = await getDownloadURL(r);
   }
 
-  await addDoc(collection(db, "items"), {
-    title,
-    thumbnail,
-    video,
-    category,
-    featured,
-    createdAt: serverTimestamp()
-  });
+  if (editId) {
+    await updateDoc(doc(db, "items", editId), {
+      title: title.value,
+      video: video.value,
+      category: category.value,
+      featured: featured.checked,
+      ...(imgURL && { thumbnail: imgURL })
+    });
+    editId = null;
+  } else {
+    await addDoc(collection(db, "items"), {
+      title: title.value,
+      thumbnail: imgURL,
+      video: video.value,
+      category: category.value,
+      featured: featured.checked,
+      createdAt: serverTimestamp()
+    });
+  }
 
-  alert("Data added ✅");
+  title.value = video.value = "";
+  imageFile.value = "";
+  featured.checked = false;
+  loadItems();
+};
 
-  document.getElementById("title").value = "";
-  document.getElementById("thumbnail").value = "";
-  document.getElementById("video").value = "";
-  document.getElementById("featured").checked = false;
+/* ❌ Delete */
+window.deleteItem = async id => {
+  if (confirm("Delete?")) {
+    await deleteDoc(doc(db, "items", id));
+    loadItems();
+  }
+};
+
+/* ✏️ Edit */
+window.editItem = (id, t, th, v, c, f) => {
+  editId = id;
+  title.value = t;
+  video.value = v;
+  category.value = c;
+  featured.checked = f;
 };
 
 /* 🚪 Logout */
-window.logout = function () {
-  signOut(auth).then(() => {
-    window.location.href = "admin-login.html";
-  });
-};
+logoutBtn.onclick = () => signOut(auth);
