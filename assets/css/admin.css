@@ -1,0 +1,143 @@
+/* ===============================
+   ADMIN PANEL – FINAL CSS
+=============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body.admin-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0f2a44, #050b18);
+  color: #eaf6ff;
+}
+
+/* HEADER */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.admin-header h1 {
+  font-size: 22px;
+}
+
+.admin-header p {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* CONTAINER */
+.admin-container {
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+/* CARD */
+.admin-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 0 40px rgba(0,255,255,0.08);
+}
+
+.admin-card h2 {
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: #00eaff;
+}
+
+/* INPUTS */
+.admin-card input,
+.admin-card select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+}
+
+.admin-card input::placeholder {
+  color: #aaa;
+}
+
+/* CHECKBOX */
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+/* BUTTONS */
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  background: linear-gradient(135deg,#00f0ff,#00b0ff);
+  color: #000;
+  cursor: pointer;
+}
+
+.logout-btn {
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  cursor: pointer;
+}
+
+/* ITEMS LIST */
+#itemsList {
+  margin-top: 10px;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.item-row img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info small {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.item-row button {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
