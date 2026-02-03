@@ -12,6 +12,7 @@ const searchInput = document.getElementById("searchInput");
 
 let allItems = [];
 
+/* 🔥 Load CapCut items */
 async function loadCapCut() {
   list.innerHTML = "Loading...";
 
@@ -21,23 +22,23 @@ async function loadCapCut() {
     orderBy("createdAt", "desc")
   );
 
-  const snapshot = await getDocs(q);
+  const snap = await getDocs(q);
   list.innerHTML = "";
   allItems = [];
 
-  snapshot.forEach(doc => {
-    const data = doc.data();
-    allItems.push(data);
+  snap.forEach(doc => {
+    allItems.push(doc.data());
   });
 
   renderItems(allItems);
 }
 
+/* 🎬 Render cards with VIDEO preview */
 function renderItems(items) {
   list.innerHTML = "";
 
   if (items.length === 0) {
-    list.innerHTML = "No templates found ❌";
+    list.innerHTML = "No CapCut templates found ❌";
     return;
   }
 
@@ -46,15 +47,34 @@ function renderItems(items) {
     card.className = "video-card";
 
     card.innerHTML = `
-      <div class="thumb">
-        <img src="${item.thumbnail}" alt="${item.title}">
-      </div>
+      <video
+        src="${item.video}"
+        muted
+        loop
+        preload="metadata"
+      ></video>
+
       <h4>${item.title}</h4>
+
       ${item.featured ? `<span class="badge">🔥 Trending</span>` : ""}
-      <button class="download-btn">⬇ Download</button>
+
+      <button class="download-btn">⬇ Use Template</button>
     `;
 
-    card.querySelector(".download-btn").onclick = () => {
+    const video = card.querySelector("video");
+
+    /* ▶ Play / Pause on tap */
+    card.onclick = () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    };
+
+    /* ⬇ Open CapCut template link */
+    card.querySelector(".download-btn").onclick = (e) => {
+      e.stopPropagation();
       window.open(item.video, "_blank");
     };
 
@@ -62,7 +82,7 @@ function renderItems(items) {
   });
 }
 
-// 🔍 Search
+/* 🔍 Search */
 searchInput.addEventListener("input", () => {
   const value = searchInput.value.toLowerCase();
   const filtered = allItems.filter(item =>
