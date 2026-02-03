@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard – JaidevEdit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ADMIN CSS -->
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-page">
+
+  <!-- HEADER -->
+  <header class="admin-header">
+    <div>
+      <h1>🛠 Admin Dashboard</h1>
+      <p id="adminEmail">Loading...</p>
+    </div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <!-- MAIN -->
+  <main class="admin-container">
+
+    <!-- ADD / EDIT FORM -->
+    <section class="admin-card">
+      <h2>➕ Add / Edit Item</h2>
+
+      <input id="title" placeholder="Title (e.g. Inventory Reel)">
+      <input id="thumbnail" placeholder="Thumbnail Image URL">
+      <input id="video" placeholder="Video / Download / Prompt / Link">
+
+      <select id="category">
+        <option value="CapCut">CapCut</option>
+        <option value="VN">VN</option>
+        <option value="Gemini">Gemini</option>
+        <option value="QR">QR</option>
+      </select>
+
+      <label class="check-row">
+        <input type="checkbox" id="featured">
+        Mark as Trending / Featured
+      </label>
+
+      <button class="primary-btn" onclick="addItem()">Save Item</button>
+    </section>
+
+    <!-- ITEMS LIST -->
+    <section class="admin-card">
+      <h2>📋 Uploaded Items</h2>
+      <div id="itemsList">Loading items...</div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/admin-dashboard.js"></script>
+</body>
+</html>
