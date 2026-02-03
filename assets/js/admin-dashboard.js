@@ -10,8 +10,8 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 🔐 Protect dashboard
-onAuthStateChanged(auth, user => {
+/* 🔐 Protect dashboard */
+onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "admin-login.html";
   } else {
@@ -20,16 +20,16 @@ onAuthStateChanged(auth, user => {
   }
 });
 
-// ➕ Add item
+/* ➕ Add item */
 window.addItem = async function () {
-  const title = titleEl.value = document.getElementById("title").value;
+  const title = document.getElementById("title").value;
   const thumbnail = document.getElementById("thumbnail").value;
   const video = document.getElementById("video").value;
   const category = document.getElementById("category").value;
   const featured = document.getElementById("featured").checked;
 
   if (!title || !thumbnail || !video) {
-    alert("All fields required");
+    alert("All fields required ❌");
     return;
   }
 
@@ -50,7 +50,7 @@ window.addItem = async function () {
   document.getElementById("featured").checked = false;
 };
 
-// 🚪 Logout
+/* 🚪 Logout */
 window.logout = function () {
   signOut(auth).then(() => {
     window.location.href = "admin-login.html";
