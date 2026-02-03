@@ -243,6 +243,12 @@ a {
   background: #4caf50;
   color: #fff;
   cursor: pointer;
+}.video-card video {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #000;
 }
 
 .logout-btn {
