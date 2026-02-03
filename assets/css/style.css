@@ -9,7 +9,7 @@
 }
 
 body {
-  background: linear-gradient(180deg, #050b1f, #020617);
+  background: linear-gradient(180deg, #050b1f, #0b163a);
   color: #ffffff;
   min-height: 100vh;
   line-height: 1.6;
@@ -27,218 +27,182 @@ a {
    HEADER (HOME)
 ========================= */
 .home-header {
-  padding: 28px 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px;
   text-align: center;
-  background: linear-gradient(135deg, #0a1a3f, #020617);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .bhakti {
   font-size: 14px;
-  color: #facc15;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  opacity: 0.9;
 }
 
 .logo-text {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 800;
-  color: #ffffff;
 }
 
 .tagline {
-  font-size: 15px;
-  color: #c7d2fe;
-  margin-top: 4px;
+  margin-top: 6px;
+  opacity: 0.85;
 }
 
 /* =========================
-   SECTIONS
-========================= */
-.section {
-  padding: 24px 16px;
-}
-
-.section h2 {
-  font-size: 22px;
-  margin-bottom: 16px;
-}
-
-/* =========================
-   GRID SYSTEM
-========================= */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
-}
-
-/* =========================
-   TRENDING CARD
-========================= */
-.trend-card {
-  background: #0b122a;
-  border-radius: 14px;
-  padding: 10px;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.trend-card img {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.trend-card h4 {
-  font-size: 14px;
-  margin: 8px 0 4px;
-}
-
-.trend-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* =========================
-   BADGE
-========================= */
-.badge {
-  display: inline-block;
-  font-size: 11px;
-  padding: 3px 8px;
-  background: #f97316;
-  color: #000;
-  border-radius: 999px;
-  margin-top: 4px;
-}
-
-/* =========================
-   CATEGORY GRID
-========================= */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 16px;
-}
-
-.category-card {
-  background: #0b122a;
-  border-radius: 16px;
-  padding: 18px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.category-card h3 {
-  font-size: 16px;
-  margin: 8px 0 4px;
-}
-
-.category-card p {
-  font-size: 13px;
-  color: #c7d2fe;
-}
-
-.category-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* =========================
-   PAGE HEADER (INNER)
+   PAGE HEADER
 ========================= */
 .page-header {
-  padding: 22px 16px;
-  background: linear-gradient(135deg, #0a1a3f, #020617);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.page-header h1 {
-  font-size: 26px;
-}
-
-.page-header p {
-  font-size: 14px;
-  color: #c7d2fe;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 25px 20px;
+  text-align: center;
 }
 
 .back-link {
   display: inline-block;
-  font-size: 13px;
-  margin-bottom: 6px;
-  color: #60a5fa;
+  margin-bottom: 12px;
+  font-size: 14px;
+  opacity: 0.85;
 }
 
 /* =========================
-   SEARCH BOX
+   SECTION
+========================= */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section h2 {
+  margin-bottom: 15px;
+}
+
+/* =========================
+   GRIDS
+========================= */
+.card-grid,
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+/* =========================
+   CATEGORY CARD
+========================= */
+.category-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.category-card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.category-card p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =========================
+   VIDEO / TEMPLATE CARD
+========================= */
+.video-card,
+.trend-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 15px;
+  text-align: center;
+}
+
+/* IMAGE */
+.thumb img,
+.trend-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* =========================
+   TITLES & BADGE
+========================= */
+.video-card h4,
+.trend-card h4 {
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  background: #ff5722;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.download-btn,
+.contact-btn {
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 25px;
+  background: #ff5722;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.download-btn:hover,
+.contact-btn:hover {
+  background: #ff784e;
+}
+
+/* =========================
+   SEARCH
 ========================= */
 .search-box {
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+  padding: 12px 15px;
+  border-radius: 25px;
   border: none;
   outline: none;
-  background: #0b122a;
-  color: #ffffff;
   font-size: 14px;
-}
-
-/* =========================
-   VIDEO / ITEM CARD
-========================= */
-.video-card {
-  background: #0b122a;
-  border-radius: 14px;
-  padding: 10px;
-}
-
-.video-card .thumb img {
-  width: 100%;
-  height: 130px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.video-card h4 {
-  font-size: 14px;
-  margin: 8px 0;
-}
-
-.download-btn {
-  width: 100%;
-  padding: 8px;
-  border-radius: 10px;
-  border: none;
-  background: #2563eb;
-  color: #ffffff;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.download-btn:hover {
-  background: #1d4ed8;
 }
 
 /* =========================
    CONTACT
 ========================= */
 .contact-card {
-  background: #0b122a;
-  padding: 24px;
+  max-width: 420px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
   border-radius: 16px;
   text-align: center;
 }
 
-.contact-btn {
-  margin-top: 14px;
-  padding: 12px 18px;
-  background: #22c55e;
-  color: #000;
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
-  font-weight: 600;
+.contact-text {
+  margin-bottom: 15px;
 }
 
 /* =========================
@@ -246,21 +210,45 @@ a {
 ========================= */
 .footer {
   text-align: center;
+  padding: 20px;
   font-size: 13px;
-  padding: 18px;
-  color: #c7d2fe;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  opacity: 0.8;
+  margin-top: 40px;
 }
 
 /* =========================
-   RESPONSIVE
+   ADMIN (BASIC)
 ========================= */
-@media (max-width: 480px) {
-  .logo-text {
-    font-size: 30px;
-  }
+.admin-page {
+  background: #050b1f;
+}
 
-  .section h2 {
-    font-size: 20px;
-  }
-}  
+.admin-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.admin-card {
+  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.primary-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 25px;
+  background: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.logout-btn {
+  background: #e53935;
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
