@@ -1,24 +1,20 @@
-import { auth } from "./firebase.js";
+import { auth, ADMINS } from "./firebase.js";
 import { signInWithEmailAndPassword }
-  from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-window.login = function () {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const errorBox = document.getElementById("error");
+document.getElementById("loginBtn").onclick = async () => {
+  const email = email.value.trim();
+  const password = password.value.trim();
 
-  errorBox.innerText = "";
-
-  if (!email || !password) {
-    errorBox.innerText = "Email and password required";
+  if (!ADMINS.includes(email)) {
+    error.innerText = "Not an admin ❌";
     return;
   }
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      window.location.href = "admin-dashboard.html";
-    })
-    .catch((err) => {
-      errorBox.innerText = err.message;
-    });
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    location.href = "admin-dashboard.html";
+  } catch (e) {
+    error.innerText = e.message;
+  }
 };
