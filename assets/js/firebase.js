@@ -12,13 +12,8 @@ const firebaseConfig = {
   appId: "1:728216514466:web:11604a54f726be80450cfb"
 };
 
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-
-/* 🔐 MULTI ADMIN LIST */
-export const ADMINS = [
-  "admin@email.com",
-  "jaidev@gmail.com"
-];
